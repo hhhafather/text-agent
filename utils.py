@@ -1,5 +1,5 @@
 import json
-from turtle import st
+import streamlit as st
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
