@@ -49,6 +49,7 @@ PROMPT_TEMPLATE = """你是一位专业的数据分析助手，你的回应内�
 当前用户请求如下：
 """
 
+
 def dataframe_agent(df, query):
     model = ChatOpenAI(
         model="gemini-2.5-flash",
