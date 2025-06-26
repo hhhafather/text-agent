@@ -1,10 +1,3 @@
-"""
-utils - 数据分析智能体使用的工具函数
-
-Author: 骆昊
-Version: 0.1
-Date: 2025/6/25
-"""
 import json
 from turtle import st
 
