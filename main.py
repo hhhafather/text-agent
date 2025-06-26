@@ -1,3 +1,12 @@
+# --- START OF FILE main.py ---
+
+"""
+main.py - 自助式数据分析（数据分析智能体）
+
+Author: 骆昊
+Version: 0.1.2 (Allow empty chart selection)
+Date: 2025/6/26
+"""
 import os
 import pickle
 import uuid
@@ -72,30 +81,11 @@ def load_data(file_path, file_type, sheet_name=None):
         return pd.DataFrame()
 
 
-# 使用 st.cache_resource 缓存 ConversationBufferMemory 和 EM 模型
-@st.cache_resource
-def get_memory_and_model():
-    memory = ConversationBufferMemory(
-        return_messages=True,
-        memory_key='chat_history',
-        input_key='question',
-        output_key='answer'
-    )
-    em_model = None
-    try:
-        with open('em.pkl', 'rb') as file_obj:
-            em_model = pickle.load(file_obj)
-    except FileNotFoundError:
-        st.warning("未找到 em.pkl。如果需要，请确保它在正确的目录中。")
-    except Exception as e:
-        st.error(f"加载 em.pkl 时出错: {e}")
-    return memory, em_model
 
 
 st.write("## 文档分析智能体")
 
-# 获取缓存的 memory 和 em_model
-st.session_state['memory'], st.session_state['em_model'] = get_memory_and_model()
+
 
 if 'session_id' not in st.session_state:
     st.session_state['session_id'] = uuid.uuid4().hex
