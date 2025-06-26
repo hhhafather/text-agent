@@ -1,6 +1,5 @@
 import json
 import streamlit as st
-
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
@@ -51,12 +50,12 @@ PROMPT_TEMPLATE = """你是一位专业的数据分析助手，你的回应内�
 当前用户请求如下：
 """
 
-
+load_dotenv()
 def dataframe_agent(df, query):
     model = ChatOpenAI(
-        model='gpt-4.1-mini',
-        base_url='https://twapi.openai-hk.com/v1',
-        api_key=st.secrets["API_KEY"],
+        model="gemini-2.5-flash",
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        # api_key=st.secrets["API_KEY"],
         temperature=0,
         max_tokens=8192
 
