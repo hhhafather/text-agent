@@ -1,12 +1,12 @@
 import os
-import pickle
+
 import uuid
 
 import matplotlib.pyplot as plt
 import openpyxl
 import pandas as pd
 import streamlit as st
-from langchain.memory import ConversationBufferMemory
+
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 
 from utils import dataframe_agent
@@ -179,10 +179,6 @@ query = st.text_area(
     placeholder='请输入你的需求'
 )
 
-table = st.radio(
-    "请选择想要生成什么图表（可选）：",
-    ("不生成图表", "柱状图", "折线图", "饼图")
-)
 
 button = st.button("生成回答")
 
@@ -204,11 +200,11 @@ if button and query and "df" in st.session_state and not st.session_state["df"].
     if "table" in result:
         st.table(pd.DataFrame(result["table"]["data"], columns=result["table"]["columns"]))
 
-    if table == "柱状图" and "bar" in result:
+    if  "bar" in result:
         create_chart(result["bar"], "柱状图")
-    elif table == "折线图" and "line" in result:
+    elif  "line" in result:
         create_chart(result["line"], "折线图")
-    elif table == "饼图" and "pie" in result:
+    elif  "pie" in result:
         create_chart(result["pie"], "饼图")
 elif button:
     st.info("请上传数据文件并输入问题。")
