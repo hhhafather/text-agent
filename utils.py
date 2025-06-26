@@ -6,6 +6,7 @@ Version: 0.1
 Date: 2025/6/25
 """
 import json
+from turtle import st
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
@@ -57,11 +58,12 @@ PROMPT_TEMPLATE = """你是一位专业的数据分析助手，你的回应内�
 当前用户请求如下：
 """
 
-load_dotenv()
+
 def dataframe_agent(df, query):
     model = ChatOpenAI(
         base_url='https://api.deepseek.com/',
         model="deepseek-reasoner",
+        api_key=st.secrets["API_KEY"],
         temperature=0,
         max_tokens=8192
 
