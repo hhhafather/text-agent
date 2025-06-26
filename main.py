@@ -1,12 +1,3 @@
-# --- START OF FILE main.py ---
-
-"""
-main.py - 自助式数据分析（数据分析智能体）
-
-Author: 骆昊
-Version: 0.1.2 (Allow empty chart selection)
-Date: 2025/6/26
-"""
 import os
 import pickle
 import uuid
