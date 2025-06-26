@@ -54,8 +54,8 @@ PROMPT_TEMPLATE = """你是一位专业的数据分析助手，你的回应内�
 
 def dataframe_agent(df, query):
     model = ChatOpenAI(
-        base_url='https://api.deepseek.com/',
-        model="deepseek-reasoner",
+        model='gpt-4.1-mini',
+        base_url='https://twapi.openai-hk.com/v1',
         api_key=st.secrets["API_KEY"],
         temperature=0,
         max_tokens=8192
